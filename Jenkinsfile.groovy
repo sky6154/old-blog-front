@@ -12,13 +12,13 @@ node {
       case "build":
         runBuild()
       break
-      case "install"
+      case "install":
         sh "npm install"
       break
-      case "update"
+      case "update":
         sh "npm update"
       break
-      case "versionCheck"
+      case "versionCheck":
         sh "npm list --depth=0"
       break
     }
