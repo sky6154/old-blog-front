@@ -1,16 +1,11 @@
-pipeline {
-  agent any
-  
-  environment {
-    REVISION = "latest"
-  }
-  
-  stages {
+node {
+  try{
     stage('Checkout'){
-      steps {
-        checkout scm
-        echo "TEST"
-      }
+      checkout scm
     }
+  }
+  catch (err){
+    currentBuild.result = 'FAILED'
+    throw err
   }
 }
