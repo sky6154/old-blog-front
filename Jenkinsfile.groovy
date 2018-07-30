@@ -7,7 +7,7 @@ node {
     switch(params.JOB){
       case "build&deploy":
         runBuild()
-        println("do some deploy docker")
+        echo "do some deploy docker"
       break
       case "build":
         runBuild()
