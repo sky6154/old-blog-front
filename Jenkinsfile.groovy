@@ -5,7 +5,7 @@ pipeline {
     REVISION = "latest"
   }
   
-  node{
+  stages {
     stage('Checkout'){
       checkout scm
       echo "TEST"
