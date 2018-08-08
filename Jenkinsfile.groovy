@@ -22,7 +22,7 @@ node {
         sh "npm list --depth=0"
       break
       case "moduleFolderRemove":
-        sh "rm -f ./node_modules"
+        sh "rm -rf ./node_modules"
       break
     }
   }
