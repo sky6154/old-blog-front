@@ -21,6 +21,9 @@ node {
       case "versionCheck":
         sh "npm list --depth=0"
       break
+      case "moduleFolderRemove":
+        sh "rm -f ./node_modules"
+      break
     }
   }
   catch (err){
