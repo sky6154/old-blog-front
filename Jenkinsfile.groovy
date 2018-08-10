@@ -7,7 +7,7 @@ node {
     switch(params.JOB){
       case "build&deploy":
         runBuild()
-        echo "do some deploy docker"
+        sh "docker-compose build"
       break
       case "build":
         runBuild()
