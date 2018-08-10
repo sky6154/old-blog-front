@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+        my_blog_front:
+                build:
+                        context: .
+                        dockerfile: ./Dockerfile
+
+                container_name: myBlogFront
+
+                ports:
+                       - "80:80"
