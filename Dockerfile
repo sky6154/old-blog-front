@@ -1,4 +1,4 @@
-FROM nginx:1.13.9-alpine
+FROM nginx:latest
 MAINTAINER <sky6154@gmail.com>
 
 COPY ./build /usr/share/nginx/html
