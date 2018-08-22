@@ -7,8 +7,6 @@ services:
                         dockerfile: ./Dockerfile
 
                 container_name: myBlogFront
-                networks:
-                        - blog-front_blog-front
 
                 ports:
                        - "80:80"
