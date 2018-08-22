@@ -8,7 +8,7 @@ services:
 
                 container_name: myBlogFront
                 networks:
-                        - blog-front
+                        - blog-front_blog-front
 
                 ports:
                        - "80:80"
