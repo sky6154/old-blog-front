@@ -4,6 +4,7 @@ services:
         my_blog_front:
                 build:
                         context: .
+                image: blog-front:test
 
                 container_name: myBlogFront
 
