@@ -13,6 +13,7 @@ node {
             configName: 'Docker Swarm blue1',
             transfers: [
               sshTransfer(sourceFiles: 'docker-compose.yml, Dockerfile, build/*',
+                          execCommand: "pwd"
                           execCommand: "docker stack deploy -c ./docker-compose.yml blog-front")
             ],
           )
