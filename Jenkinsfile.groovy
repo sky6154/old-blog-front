@@ -12,7 +12,7 @@ node {
           sshPublisherDesc(
             configName: 'Docker Swarm blue1',
             transfers: [sshTransfer(sourceFiles: 'docker-compose.yml, Dockerfile, build/*')],
-            execCommand: "docker stack deploy -c docker-compose.yml blog-front"
+            execCommand: 'echo "docker stack deploy -c docker-compose.yml blog-front'
           )
         ])
       break
