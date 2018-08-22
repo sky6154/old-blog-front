@@ -5,8 +5,12 @@ services:
                 build:
                         context: .
                         dockerfile: ./Dockerfile
+                        image: my_blog_front:test
 
                 container_name: myBlogFront
+                networks:
+                        - blog-front
 
                 ports:
                        - "80:80"
+                       
