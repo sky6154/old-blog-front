@@ -8,7 +8,7 @@ node {
       case "build&deploy":
         runBuild()
         sh "docker-compose build"
-        sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker Swarm blue1', transfers: [sshTransfer(sourceFiles: 'docker-compose.yml')])])
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker Swarm blue1', transfers: [sshTransfer(sourceFiles: 'docker-compose.yml', 'Dockerfile', 'build')])])
       break
       case "build":
         runBuild()
