@@ -3,7 +3,7 @@
   docker service rm blog-front
 }
 {
-  docker rmi blog-front:latest
+  docker rmi -f blog-front:latest
 }
 
 docker load < blog-front.tar
