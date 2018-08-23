@@ -8,7 +8,7 @@ node {
       case "build&deploy":
         runBuild()
         sh "docker-compose build"
-        sh "docker save -o blog-front.tar blog-front:latest
+        sh "docker save -o blog-front.tar blog-front:latest"
         sshPublisher(publishers: [
           sshPublisherDesc(
             configName: 'Docker Swarm blue1',
