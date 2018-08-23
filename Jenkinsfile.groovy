@@ -13,12 +13,9 @@ node {
           sshPublisherDesc(
             configName: 'Docker Swarm blue1',
             transfers: [
-              sshTransfer(sourceFiles: 'blog-front.tar',
+              sshTransfer(sourceFiles: 'blog-front.tar, deploy.sh',
                           execCommand: "cd /workspace && \
-                                        docker service rm blog-front && \
-                                        docker rmi blog-front:latest && \
-                                        docker load < blog-front.tar && \
-                                        docker service create --name blog-front --replicas 3 --publish 80:80 blog-front:latest")
+                                        deploy.sh")
             ],
           )
         ])
