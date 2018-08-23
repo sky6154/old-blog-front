@@ -15,6 +15,7 @@ node {
             transfers: [
               sshTransfer(sourceFiles: 'blog-front.tar, deploy.sh',
                           execCommand: "cd /workspace && \
+                                        pwd && \
                                         deploy.sh")
             ],
           )
