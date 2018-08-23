@@ -7,4 +7,4 @@
 }
 
 docker load < blog-front.tar
-service create --name blog-front --replicas 3 --publish 80:80 blog-front:latest
+docker service create --name blog-front --replicas 3 --publish 80:80 blog-front:latest
