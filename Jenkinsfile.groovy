@@ -1,5 +1,10 @@
 #!/usr/bin/env groovy
 
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
+
 node {
   try{
     stage('Checkout'){
