@@ -29,7 +29,7 @@ node {
         ])
           echo "current env : ${env.CURRENT_ENV}"
           
-          if($(env.CURRENT_ENV) == "blue"){
+          if(${env.CURRENT_ENV} == "blue"){
             overwriteEnv("green")
           }
           else{
