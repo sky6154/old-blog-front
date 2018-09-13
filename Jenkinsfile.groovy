@@ -63,6 +63,7 @@ def runBuild(){
 }
           
 def overwriteEnv(activeEnv){
+  echo activeEnv
   instance = Jenkins.getInstance()
   globalNodeProperties = instance.getGlobalNodeProperties()
   envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
@@ -82,5 +83,4 @@ def overwriteEnv(activeEnv){
   envVars.put("CURRENT_ENV", activeEnv)
 
   instance.save()
-
 }
