@@ -22,7 +22,7 @@ node {
         ])
           echo "current env : ${env.CURRENT_ENV}"
           environment {
-            CURRENT_ENV : "green"
+            CURRENT_ENV = "green"
           }
           echo "current env : ${env.CURRENT_ENV}"
       break
