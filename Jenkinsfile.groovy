@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 node {
   try{
     stage('Checkout'){
@@ -21,9 +23,14 @@ node {
           )
         ])
           echo "current env : ${env.CURRENT_ENV}"
-          environment {
-            CURRENT_ENV = "green"
+          
+          if($(env.CURRENT_ENV) == "blue"){
+            overwriteEnv("green")
           }
+          else{
+            overwriteEnv("blue")
+          }
+          
           echo "current env : ${env.CURRENT_ENV}"
       break
       case "build":
@@ -53,4 +60,27 @@ node {
 
 def runBuild(){
   sh "npm run build"
+}
+          
+def overwriteEnv(activeEnv){
+  instance = Jenkins.getInstance()
+  globalNodeProperties = instance.getGlobalNodeProperties()
+  envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
+
+  newEnvVarsNodeProperty = null
+  envVars = null
+
+  if ( envVarsNodePropertyList == null || envVarsNodePropertyList.size() == 0 ) {
+    newEnvVarsNodeProperty = new hudson.slaves.EnvironmentVariablesNodeProperty();
+    globalNodeProperties.add(newEnvVarsNodeProperty)
+    envVars = newEnvVarsNodeProperty.getEnvVars()
+  }
+  else {
+    envVars = envVarsNodePropertyList.get(0).getEnvVars()
+  }
+
+  envVars.put("CURRENT_ENV", activeEnv)
+
+  instance.save()
+
 }
