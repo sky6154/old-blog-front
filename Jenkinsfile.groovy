@@ -20,6 +20,7 @@ node {
             ],
           )
         ])
+          echo "current env : ${env.CURRENT_ENV}"
       break
       case "build":
         runBuild()
