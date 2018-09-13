@@ -21,6 +21,8 @@ node {
           )
         ])
           echo "current env : ${env.CURRENT_ENV}"
+          ${env.CURRENT_ENV} = "green"
+          echo "current env : ${env.CURRENT_ENV}"
       break
       case "build":
         runBuild()
