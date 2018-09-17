@@ -68,7 +68,8 @@ node {
 def runBuild(){
   sh "npm run build"
 }
-          
+
+@NonCPS
 def overwriteEnv(activeEnv){
   echo activeEnv
   instance = Jenkins.getInstance()
