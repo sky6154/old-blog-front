@@ -69,15 +69,14 @@ def runBuild(){
   sh "npm run build"
 }
 
-@NonCPS
 def overwriteEnv(activeEnv){
   echo activeEnv
-  instance = Jenkins.getInstance()
-  globalNodeProperties = instance.getGlobalNodeProperties()
-  envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
-
-  newEnvVarsNodeProperty = null
-  envVars = null
+  
+  Jenkins instance = Jenkins.getInstance()
+  def globalNodeProperties = instance.getGlobalNodeProperties()
+  def envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
+  def newEnvVarsNodeProperty = null
+  def envVars = null
 
   if ( envVarsNodePropertyList == null || envVarsNodePropertyList.size() == 0 ) {
     newEnvVarsNodeProperty = new hudson.slaves.EnvironmentVariablesNodeProperty();
