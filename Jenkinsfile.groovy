@@ -24,7 +24,7 @@ node {
           deployWorkerList.add("Docker Swarm blue3")
           
           def stepsForParallel = deployWorkerList.collectEntries {
-            ["deploying ${it}" : deployWorker(it)]
+            ["${it}" : deployWorker(it)]
           }
           parallel stepsForParallel
           
@@ -37,7 +37,7 @@ node {
           deployWorkerList.add("Docker Swarm green3")
           
           def stepsForParallel = deployWorkerList.collectEntries {
-            ["deploying ${it}" : deployWorker(it)]
+            ["${it}" : deployWorker(it)]
           }
           parallel stepsForParallel
           
