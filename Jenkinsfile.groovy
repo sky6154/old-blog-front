@@ -97,19 +97,17 @@ def deployWorker(configName){
   // To do this, you need to wrap the code below in { }, and either return
   // that explicitly, or use { -> } syntax.
   return {
-    node{
-      sshPublisher(publishers: [
-        sshPublisherDesc(
-          configName: configName,
-          transfers: [
-            sshTransfer(sourceFiles: 'blog-front.tar, deploy-worker.sh',
-                        execCommand: "cd /workspace && \
-                                      chmod 744 ./deploy-worker.sh && \
-                                      ./deploy-worker.sh")
-          ],
-        )
-      ])
-    }
+    sshPublisher(publishers: [
+      sshPublisherDesc(
+        configName: configName,
+        transfers: [
+          sshTransfer(sourceFiles: 'blog-front.tar, deploy-worker.sh',
+                      execCommand: "cd /workspace && \
+                                    chmod 744 ./deploy-worker.sh && \
+                                    ./deploy-worker.sh")
+        ],
+      )
+    ])  
   }
 }
 
