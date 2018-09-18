@@ -16,29 +16,25 @@ node {
         runBuild()
         sh "docker-compose build"
         sh "docker save -o blog-front.tar blog-front:latest"
-        sshPublisher(publishers: [
-          sshPublisherDesc(
-            configName: 'Docker Swarm blue1',
-            transfers: [
-              sshTransfer(sourceFiles: 'blog-front.tar, deploy.sh',
-                          execCommand: "cd /workspace && \
-                                        chmod 744 ./deploy.sh && \
-                                        ./deploy.sh")
-            ],
-          )
-        ])
-          echo "current env : ${env.CURRENT_ENV}"
-          
-          if("${env.CURRENT_ENV}" == "blue"){
-            echo "equal blue"
-            overwriteEnv("green")
-          }
-          else{
-            echo "else"
-            overwriteEnv("blue")
-          }
-          
-          echo "current env : ${env.CURRENT_ENV}"
+        
+        List<String> deployTargetList = new ArrayList<String>();
+      
+        if("${env.CURRENT_ENV}" == "blue"){
+          list.add("Docker Swarm blue1");
+          list.add("Docker Swarm blue2");
+          list.add("Docker Swarm blue3");
+          overwriteEnv("green")
+        }
+        else{
+          list.add("Docker Swarm green1");
+          list.add("Docker Swarm green2");
+          list.add("Docker Swarm green3");
+          overwriteEnv("blue")
+        }
+      
+        for (String configName : deployTargetList) {
+           deploy(configName)
+        }
       break
       case "build":
         runBuild()
@@ -68,10 +64,22 @@ node {
 def runBuild(){
   sh "npm run build"
 }
+          
+def deploy(configName){
+  sshPublisher(publishers: [
+    sshPublisherDesc(
+      configName: configName,
+      transfers: [
+        sshTransfer(sourceFiles: 'blog-front.tar, deploy.sh',
+                    execCommand: "cd /workspace && \
+                                  chmod 744 ./deploy.sh && \
+                                  ./deploy.sh")
+      ],
+    )
+  ])
+}
 
 def overwriteEnv(activeEnv){
-  echo activeEnv
-  
   Jenkins instance = Jenkins.getInstance()
   def globalNodeProperties = instance.getGlobalNodeProperties()
   def envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
