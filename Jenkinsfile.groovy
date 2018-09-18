@@ -17,18 +17,18 @@ node {
         sh "docker-compose build"
         sh "docker save -o blog-front.tar blog-front:latest"
         
-        List<String> deployTargetList = new ArrayList<String>();
+        def deployTargetList = []
       
         if("${env.CURRENT_ENV}" == "blue"){
-          list.add("Docker Swarm blue1");
-          list.add("Docker Swarm blue2");
-          list.add("Docker Swarm blue3");
+          deployTargetList.add("Docker Swarm blue1")
+          deployTargetList.add("Docker Swarm blue2")
+          deployTargetList.add("Docker Swarm blue3")
           overwriteEnv("green")
         }
         else{
-          list.add("Docker Swarm green1");
-          list.add("Docker Swarm green2");
-          list.add("Docker Swarm green3");
+          deployTargetList.add("Docker Swarm green1")
+          deployTargetList.add("Docker Swarm green2")
+          deployTargetList.add("Docker Swarm green3")
           overwriteEnv("blue")
         }
       
