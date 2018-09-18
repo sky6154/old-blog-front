@@ -3,7 +3,7 @@
   docker rmi -f blog-front:latest
 }
 {
-  docker system prune -y
+  docker system prune -f
 }
 
 docker load < blog-front.tar
