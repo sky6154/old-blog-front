@@ -8,10 +8,6 @@ services:
                 image: blog-front:latest
 
                 container_name: myBlogFront
-                
-#                deploy:
-#                        mode: replicated
-#                        replicas: 3
 
                 ports:
                        - "80:80"
