@@ -17,24 +17,36 @@ node {
         sh "docker-compose build"
         sh "docker save -o blog-front.tar blog-front:latest"
         
-        def deployTargetList = []
+        def deployWorkerList = []
       
         if("${env.CURRENT_ENV}" == "blue"){
-          deployTargetList.add("Docker Swarm blue1")
-          deployTargetList.add("Docker Swarm blue2")
-          deployTargetList.add("Docker Swarm blue3")
+          deployWorkerList.add("Docker Swarm blue2")
+          deployWorkerList.add("Docker Swarm blue3")
+          
+          def stepsForParallel = deployWorkerList.collectEntries {
+            ["deploying ${it}" : deployWorker(it)]
+          }
+          parallel stepsForParallel
+          
+          deployManager("Docker Swarm blue1")
+          
           overwriteEnv("green")
         }
         else{
-          deployTargetList.add("Docker Swarm green1")
-          deployTargetList.add("Docker Swarm green2")
-          deployTargetList.add("Docker Swarm green3")
+          deployWorkerList.add("Docker Swarm green2")
+          deployWorkerList.add("Docker Swarm green3")
+          
+          def stepsForParallel = deployWorkerList.collectEntries {
+            ["deploying ${it}" : deployWorker(it)]
+          }
+          parallel stepsForParallel
+          
+          deployManager("Docker Swarm green1")
+          
           overwriteEnv("blue")
         }
       
-        for (String configName : deployTargetList) {
-           deploy(configName)
-        }
+        
       break
       case "build":
         runBuild()
@@ -65,18 +77,40 @@ def runBuild(){
   sh "npm run build"
 }
           
-def deploy(configName){
+def deployManager(configName){
   sshPublisher(publishers: [
     sshPublisherDesc(
       configName: configName,
       transfers: [
-        sshTransfer(sourceFiles: 'blog-front.tar, deploy.sh',
+        sshTransfer(sourceFiles: 'blog-front.tar, deploy-manager.sh',
                     execCommand: "cd /workspace && \
-                                  chmod 744 ./deploy.sh && \
-                                  ./deploy.sh")
+                                  chmod 744 ./deploy-manager.sh && \
+                                  ./deploy-manager.sh")
       ],
     )
   ])
+}
+    
+def deployWorker(configName){
+  // We need to wrap what we return in a Groovy closure, or else it's invoked
+  // when this method is called, not when we pass it to parallel.
+  // To do this, you need to wrap the code below in { }, and either return
+  // that explicitly, or use { -> } syntax.
+  return {
+    node{
+      sshPublisher(publishers: [
+        sshPublisherDesc(
+          configName: configName,
+          transfers: [
+            sshTransfer(sourceFiles: 'blog-front.tar, deploy-worker.sh',
+                        execCommand: "cd /workspace && \
+                                      chmod 744 ./deploy-worker.sh && \
+                                      ./deploy-worker.sh")
+          ],
+        )
+      ])
+    }
+  }
 }
 
 def overwriteEnv(activeEnv){
