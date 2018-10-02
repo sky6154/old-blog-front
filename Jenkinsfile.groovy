@@ -31,6 +31,9 @@ node {
           deployManager("Docker Swarm blue1")
           
           overwriteEnv("green")
+          
+          sh "docker cp /var/deploy_env_conf/green.conf myNginx:/etc/nginx/conf.d/target.conf"
+          sh "docker kill -s HUP myNginx"
         }
         else{
           deployWorkerList.add("Docker Swarm green2")
@@ -44,6 +47,9 @@ node {
           deployManager("Docker Swarm green1")
           
           overwriteEnv("blue")
+          
+          sh "docker cp /var/deploy_env_conf/blue.conf myNginx:/etc/nginx/conf.d/target.conf"
+          sh "docker kill -s HUP myNginx"
         }
       
         
