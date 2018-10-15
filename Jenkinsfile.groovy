@@ -89,7 +89,7 @@ def deployManager(configName){
       configName: configName,
       transfers: [
         sshTransfer(sourceFiles: 'blog-front.tar, deploy-manager.sh',
-                    execCommand: "cd /workspace && \
+                    execCommand: "cd /root && \
                                   chmod 744 ./deploy-manager.sh && \
                                   ./deploy-manager.sh")
       ],
@@ -108,7 +108,7 @@ def deployWorker(configName){
         configName: configName,
         transfers: [
           sshTransfer(sourceFiles: 'blog-front.tar, deploy-worker.sh',
-                      execCommand: "cd /workspace && \
+                      execCommand: "cd /root && \
                                     chmod 744 ./deploy-worker.sh && \
                                     ./deploy-worker.sh")
         ],
