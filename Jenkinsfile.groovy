@@ -20,22 +20,6 @@ node {
         def deployWorkerList = []
       
         if("${env.CURRENT_ENV}" == "blue"){
-          deployWorkerList.add("Docker Swarm blue2")
-          deployWorkerList.add("Docker Swarm blue3")
-          
-          def stepsForParallel = deployWorkerList.collectEntries {
-            ["${it}" : deployWorker(it)]
-          }
-          parallel stepsForParallel
-          
-          deployManager("Docker Swarm blue1")
-          
-          overwriteEnv("green")
-          
-          sh "docker cp /var/deploy_env_conf/green.conf myNginx:/etc/nginx/conf.d/target.conf"
-          sh "docker kill -s HUP myNginx"
-        }
-        else{
           deployWorkerList.add("Docker Swarm green2")
           deployWorkerList.add("Docker Swarm green3")
           
@@ -45,6 +29,22 @@ node {
           parallel stepsForParallel
           
           deployManager("Docker Swarm green1")
+          
+          overwriteEnv("green")
+          
+          sh "docker cp /var/deploy_env_conf/green.conf myNginx:/etc/nginx/conf.d/target.conf"
+          sh "docker kill -s HUP myNginx"
+        }
+        else{
+          deployWorkerList.add("Docker Swarm blue2")
+          deployWorkerList.add("Docker Swarm blue3")
+          
+          def stepsForParallel = deployWorkerList.collectEntries {
+            ["${it}" : deployWorker(it)]
+          }
+          parallel stepsForParallel
+          
+          deployManager("Docker Swarm blue1")
           
           overwriteEnv("blue")
           
