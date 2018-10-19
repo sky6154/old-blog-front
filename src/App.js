@@ -1,18 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+
+import Header          from './conatainers/Header';
+import Footer          from './conatainers/Footer';
+
 import './App.css';
+import './font.css';
+import {Route, Switch} from "react-router-dom";
+import Main            from "./conatainers/Main";
+import RightWidget     from "./conatainers/RightWidget";
 
 class App extends Component {
-  render() {
+  render(){
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+          <div className="custom-background">
+            <div id="pagebwrap">
+              <Header />
+              <div className="wide contenitor">
+                <div className="site-contentbwrap container" id="contentbwrap">
+                  <Switch>
+                    {/*<Route path="/noAuth" component={NoAuthorization} />*/}
+                    <Route exact path="/" component={Main} />
+                  </Switch>
+                  <RightWidget/>
+                </div>
+              </div>
+              <Footer />
+            </div>
+          </div>
+
       </div>
     );
   }
