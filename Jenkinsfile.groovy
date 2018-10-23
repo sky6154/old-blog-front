@@ -32,7 +32,7 @@ node {
           
           overwriteEnv("green")
           
-          sh "docker cp /var/deploy_env_conf/green.conf myNginx:/etc/nginx/conf.d/target.conf"
+          sh "docker cp /var/deploy_env_conf/green_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
           sh "docker kill -s HUP myNginx"
         }
         else{
@@ -48,7 +48,7 @@ node {
           
           overwriteEnv("blue")
           
-          sh "docker cp /var/deploy_env_conf/blue.conf myNginx:/etc/nginx/conf.d/target.conf"
+          sh "docker cp /var/deploy_env_conf/blue_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
           sh "docker kill -s HUP myNginx"
         }
       
