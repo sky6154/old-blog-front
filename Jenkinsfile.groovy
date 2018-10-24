@@ -13,61 +13,98 @@ node {
     
     switch(params.JOB){
       case "build&deploy":
-        runBuild()
-        sh "docker-compose build"
-        sh "docker save -o blog-front.tar blog-front:latest"
+        stage('npm build'){
+          runBuild()
+        }
+
+        stage('docker-compose build & save image'){
+          sh "docker-compose build"
+          sh "docker save -o blog-front.tar blog-front:latest"
+        }
         
         def deployWorkerList = []
       
         if("${env.CURRENT_ENV}" == "blue"){
           deployWorkerList.add("Docker Swarm green2")
           deployWorkerList.add("Docker Swarm green3")
-          
-          def stepsForParallel = deployWorkerList.collectEntries {
-            ["${it}" : deployWorker(it)]
+
+          stage('deploy swarm worker'){
+              def stepsForParallel = deployWorkerList.collectEntries {
+                ["${it}" : deployWorker(it)]
+              }
+              parallel stepsForParallel
           }
-          parallel stepsForParallel
-          
-          deployManager("Docker Swarm green1")
-          
-          overwriteEnv("green")
-          
-          sh "docker cp /var/deploy_env_conf/green_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
-          sh "docker kill -s HUP myNginx"
+
+          stage('deploy swarm manager'){
+            deployManager("Docker Swarm green1")
+          }
+
+          stage('overwrite env'){
+            overwriteEnv("green")
+          }
+
+          stage('overwrite nginx conf'){
+            sh "docker cp /var/deploy_env_conf/green_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
+          }
+
+          stage('reload nginx'){
+            sh "docker kill -s HUP myNginx"
+          }
         }
         else{
           deployWorkerList.add("Docker Swarm blue2")
           deployWorkerList.add("Docker Swarm blue3")
           
-          def stepsForParallel = deployWorkerList.collectEntries {
-            ["${it}" : deployWorker(it)]
+          stage('deploy swarm worker'){
+              def stepsForParallel = deployWorkerList.collectEntries {
+                ["${it}" : deployWorker(it)]
+              }
+              parallel stepsForParallel
           }
-          parallel stepsForParallel
-          
-          deployManager("Docker Swarm blue1")
-          
-          overwriteEnv("blue")
-          
-          sh "docker cp /var/deploy_env_conf/blue_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
-          sh "docker kill -s HUP myNginx"
+
+          stage('deploy swarm manager'){
+            deployManager("Docker Swarm blue1")
+          }
+
+          stage('overwrite env'){
+            overwriteEnv("blue")
+          }
+
+          stage('overwrite nginx conf'){
+            sh "docker cp /var/deploy_env_conf/blue_front.conf myNginx:/etc/nginx/conf.d/target_front.conf"
+          }
+
+          stage('reload nginx'){
+            sh "docker kill -s HUP myNginx"
+          }
         }
       
         
       break
       case "build":
-        runBuild()
+        stage('npm build'){
+          runBuild()
+        }
       break
       case "install":
-        sh "npm install"
+        stage('npm install'){
+          sh "npm install"
+        }
       break
       case "update":
-        sh "npm update"
+        stage('npm update'){
+          sh "npm update"
+        }
       break
       case "versionCheck":
-        sh "npm list --depth=0"
+        stage('package version check'){
+          sh "npm list --depth=0"
+        }
       break
       case "moduleFolderRemove":
-        sh "rm -rf ./node_modules"
+        stage('remove modules folder'){
+          sh "rm -rf ./node_modules"
+        }
       break
     }
   }
