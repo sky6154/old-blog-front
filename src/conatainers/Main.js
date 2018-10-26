@@ -1,46 +1,62 @@
 import React, {Component} from 'react';
+import {withRouter}           from "react-router";
+import {connect}              from "react-redux";
+
+import PropTypes from "prop-types";
+import _ from "lodash";
+
+import {fetchPostListTrigger} from "../redux/actions/post";
 import SummaryPost        from "../components/SummaryPost";
 
 class Main extends Component {
+
+  componentWillMount(){
+    this.props.fetchPostListTrigger();
+  }
+
+  moreClick = (data) =>{
+    let form = {};
+    form.postNum = data.postNum;
+
+    console.log(data);
+  };
+
   render(){
+    const {postList} = this.props;
+
+    console.log(postList);
+
     return (
       <div className="content-areabwrap twelve columns" id="primarybwrap">
         <div className="site-mainbwrap" id="mainbwrap" role="main">
           <div className="mainblogsec section" id="mainblogsec">
             <div className="widget Blog" data-version="1">
               <div className="blog-posts hfeed">
-                <SummaryPost date={"Wednesday, April 23, 2014"} author={"W.A.M. Lasantha Bandara Karunarathna"}
-                             commentCount={1} title={"Sample post with, links, paragraphs and comments"}
-                             summary={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ..."}
-                             imageOrigin={"http://1.bp.blogspot.com/--Mabz83p5tg/U1h1u1S2pvI/AAAAAAAAIos/wRC4CfMIt7E/s1600/postimg-2.jpg"} />
+                {(() =>{
+                  if(!_.isEmpty(postList)){
 
+                    let list = [];
+                    _.forEach(postList, function (value, key){
+                      let req = {
+                        postNum  : value.seq
+                      };
 
-                <SummaryPost date={"Wednesday, April 23, 2014"} author={"W.A.M. Lasantha Bandara Karunarathna"}
-                             commentCount={0} title={"This is Just Going To Be Another Test Post"}
-                             summary={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ..."}
-                             imageOrigin={"http://2.bp.blogspot.com/-zUsj8biczxE/U1h1x9RmIOI/AAAAAAAAIpE/IfmPv1JWGVw/s1600/postimg-5.jpg"} />
+                      let summary = value.content; // need to chop
+                      let thumbnail = value.thumbnail;
 
-                <SummaryPost date={"Wednesday, April 23, 2014"} author={"W.A.M. Lasantha Bandara Karunarathna"}
-                             commentCount={2} title={"한글도 테스트 해보자"}
-                             summary={"두비두밤 비밤바.."}
-                             imageOrigin={"http://3.bp.blogspot.com/-V5atjKU8f4U/U1h1o1906GI/AAAAAAAAIns/tVmysrWUSZE/s1600/postimg-1.jpg"} />
+                      list.push(
+                        <SummaryPost date={value.regDate} author={value.author}
+                                             commentCount={value.commentCount} title={value.title}
+                                             summary={summary}
+                                             imageOrigin={thumbnail} />
+                      );
+                    });
 
-                <SummaryPost date={"Wednesday, April 23, 2014"} author={"W.A.M. Lasantha Bandara Karunarathna"}
-                             commentCount={3} title={"제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목"}
-                             summary={"우ㅏ이ㅓㅁ;ㅣㅏㄴㅇ러ㅣㅏㅁㄴ어리ㅏ;ㅁㄴㅇ뤼ㅏㅁㄴㅇ러ㅣㅏㅁㄴㅇ러ㅣㅏ;ㅁㄴ어라ㅣㅁㄴ어리ㅏㅁㄴ얾ㄴ아ㅣ러;ㅁㅇ낢ㄴㄻㅇㄴㄻㄴㅇㄹㄴㅇㄹ"}
-                             imageOrigin={"http://2.bp.blogspot.com/-WtnH0gxhniY/U1h10c1BMZI/AAAAAAAAIpc/Te9_0Fnk0Mc/s1600/postimg-8.jpg"} />
-
-                <SummaryPost date={"Wednesday, April 23, 2014"} author={"W.A.M. Lasantha Bandara Karunarathna"}
-                             commentCount={4} title={"Sample post with, links, paragraphs and comments"}
-                             summary={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ..."}
-                             imageOrigin={"http://2.bp.blogspot.com/-vZQqwQIswnY/U1h1qDulejI/AAAAAAAAIn8/gXOqXI_6Nk8/s1600/postimg-11.jpg"} />
-
+                    return list;
+                  }
+                })()}
               </div>
             </div>
-
-
-
-
 
             <div style={{clear: "both"}} />
             <div className="blog-pager" id="blog-pager">
@@ -74,4 +90,23 @@ class Main extends Component {
 }
 
 
-export default Main;
+Main.defaultProps = {
+  postList          : [],
+  isPostListFetching: false
+}
+
+Main.propTypes = {
+  postList          : PropTypes.array,
+  isPostListFetching: PropTypes.bool.isRequired
+}
+
+function mapStateToProps(state){
+  return {
+    postList          : state.post.postList,
+    isPostListFetching: state.post.isPostListFetching
+  };
+}
+
+export default withRouter(connect(mapStateToProps, {
+  fetchPostListTrigger
+})(Main));

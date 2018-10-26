@@ -7,7 +7,6 @@ class Header extends Component {
     this.props.history.push(url);
   }
 
-
   render(){
     return (
       <header className="site-headerbwrap" id="mastheadbwrap" role="banner">
@@ -18,18 +17,16 @@ class Header extends Component {
                 <div id="header-inner">
                   <div className="titlewrapper">
                     <h1 className="site-title">
-                      <a href="http://base-business.blogspot.com/">Base Business</a>
+                      <a href="http://base-business.blogspot.com/">DEVELOBEER</a>
                     </h1>
                   </div>
-                  <h2 className="site-description">Base Business Blogger Template</h2>
+                  <h2 className="site-description">전원버튼 부터 웹사이트까지</h2>
                 </div>
               </div>
             </div>
           </div>
           <div className="eleven columns navmenubwrap">
             <nav className="main-navigationbwrap" id="site-navigationbwrap" role="navigation">
-              <h1 className="menu-togglebwrap">Menu</h1>
-              <a className="skip-linkbwrap screen-reader-textbwrap" href="#contentbwrap">Skip to content</a>
               <div className="menu-testing-menu-container">
                 <ul>
                   <li><a href="http://base-business.blogspot.com/">Home</a></li>

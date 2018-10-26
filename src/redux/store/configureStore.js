@@ -14,15 +14,15 @@ const appReducer = combineReducers(Object.assign({}, rootReducer, {
 
 const reducer = (state, action) => {
   // 로그아웃 시 session storage 및 state에 저장된 모든 데이터 초기화
-  if(action.type === 'LOGOUT_SUCCESS'){
-    removeSessionInfo();
-
-    const { routing } = state;
-    state = { routing };
-  }
+  // if(action.type === 'LOGOUT_SUCCESS'){
+  //   removeSessionInfo();
+  //
+  //   const { routing } = state;
+  //   state = { routing };
+  // }
 
   return appReducer(state, action);
-}
+};
 
 function configureStoreProd(initialState) {
   const sagaMiddleware = createSagaMiddleware();

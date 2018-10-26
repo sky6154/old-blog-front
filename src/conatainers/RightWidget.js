@@ -63,17 +63,6 @@ class RightWidget extends Component {
               </li>
             </ul>
             <div className="clear"></div>
-            <span className="widget-item-control">
-              <span className="item-control blog-admin">
-                <a className="quickedit"
-                   href="//www.blogger.com/rearrange?blogID=4983387981592302466&widgetType=PopularPosts&widgetId=PopularPosts1&action=editWidget&sectionId=sidebarright"
-                   onClick='return _WidgetManager._PopupConfig(document.getElementById("PopularPosts1"));'
-                   target="configPopularPosts1" title="Edit">
-                  <img alt="" height="18" src="https://resources.blogblog.com/img/icon18_wrench_allbkg.png"
-                       width="18" />
-                </a>
-              </span>
-            </span>
             <div className="clear"></div>
           </div>
         </div><div className="widget HTML" data-version="1" id="HTML1">
@@ -85,16 +74,6 @@ class RightWidget extends Component {
             </script>
           </div>
           <div className="clear"></div>
-          <span className="widget-item-control">
-            <span className="item-control blog-admin">
-              <a className="quickedit"
-                 href="//www.blogger.com/rearrange?blogID=4983387981592302466&widgetType=HTML&widgetId=HTML1&action=editWidget&sectionId=sidebarright"
-                 onClick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target="configHTML1"
-                 title="Edit">
-                <img alt="" height="18" src="https://resources.blogblog.com/img/icon18_wrench_allbkg.png" width="18" />
-              </a>
-            </span>
-          </span>
           <div className="clear"></div>
         </div><div className="widget Label" data-version="1" id="Label1">
           <h2>Categories</h2>
@@ -122,17 +101,6 @@ class RightWidget extends Component {
               </li>
             </ul>
             <div className="clear"></div>
-            <span className="widget-item-control">
-              <span className="item-control blog-admin">
-                <a className="quickedit"
-                   href="//www.blogger.com/rearrange?blogID=4983387981592302466&widgetType=Label&widgetId=Label1&action=editWidget&sectionId=sidebarright"
-                   onClick='return _WidgetManager._PopupConfig(document.getElementById("Label1"));'
-                   target="configLabel1" title="Edit">
-                  <img alt="" height="18" src="https://resources.blogblog.com/img/icon18_wrench_allbkg.png"
-                       width="18" />
-                </a>
-              </span>
-            </span>
             <div className="clear"></div>
           </div>
         </div><div className="widget Text" data-version="1" id="Text2">
@@ -141,16 +109,6 @@ class RightWidget extends Component {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation test link ullamco laboris nisi ut aliquip ex ea commodo consequat.<br />
           </div>
           <div className="clear"></div>
-          <span className="widget-item-control">
-            <span className="item-control blog-admin">
-              <a className="quickedit"
-                 href="//www.blogger.com/rearrange?blogID=4983387981592302466&widgetType=Text&widgetId=Text2&action=editWidget&sectionId=sidebarright"
-                 onClick='return _WidgetManager._PopupConfig(document.getElementById("Text2"));' target="configText2"
-                 title="Edit">
-                <img alt="" height="18" src="https://resources.blogblog.com/img/icon18_wrench_allbkg.png" width="18" />
-              </a>
-            </span>
-          </span>
           <div className="clear"></div>
         </div><div className="widget BlogArchive" data-version="1" id="BlogArchive1">
           <h2>Blog Archive</h2>
@@ -171,17 +129,6 @@ class RightWidget extends Component {
               </div>
             </div>
             <div className="clear"></div>
-            <span className="widget-item-control">
-              <span className="item-control blog-admin">
-                <a className="quickedit"
-                   href="//www.blogger.com/rearrange?blogID=4983387981592302466&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget&sectionId=sidebarright"
-                   onClick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));'
-                   target="configBlogArchive1" title="Edit">
-                  <img alt="" height="18" src="https://resources.blogblog.com/img/icon18_wrench_allbkg.png"
-                       width="18" />
-                </a>
-              </span>
-            </span>
             <div className="clear"></div>
           </div>
         </div></div>
