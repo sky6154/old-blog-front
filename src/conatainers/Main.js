@@ -11,7 +11,7 @@ import SummaryPost        from "../components/SummaryPost";
 class Main extends Component {
 
   componentWillMount(){
-    this.props.fetchPostListTrigger();
+    // this.props.fetchPostListTrigger();
   }
 
   moreClick = (data) =>{

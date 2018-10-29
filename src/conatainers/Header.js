@@ -20,7 +20,7 @@ class Header extends Component {
                       <a href="http://base-business.blogspot.com/">DEVELOBEER</a>
                     </h1>
                   </div>
-                  <h2 className="site-description">전원버튼 부터 웹사이트까지</h2>
+                  <h2 className="site-description">전원버튼부터 웹사이트까지</h2>
                 </div>
               </div>
             </div>
@@ -30,46 +30,39 @@ class Header extends Component {
               <div className="menu-testing-menu-container">
                 <ul>
                   <li><a href="http://base-business.blogspot.com/">Home</a></li>
-                  <li><a href="#">Business</a>
+                  <li><a href="#">IT</a>
                     <ul className="sub-menu">
-                      <li><a href="#">Internet</a></li>
-                      <li><a href="#">Market</a></li>
-                      <li><a href="#">Stock</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Downloads</a>
-                    <ul className="sub-menu">
-                      <li><a href="#">Dvd</a></li>
-                      <li><a href="#">Games</a></li>
-                      <li><a href="#">Software</a>
+                      <li><a href="#">Language</a>
                         <ul className="sub-menu">
-                          <li><a href="#">Office</a>
-                          </li>
+                          <li><a href="#">JAVA</a></li>
+                          <li><a href="#">PHP</a></li>
+                          <li><a href="#">Javascript</a></li>
+                          <li><a href="#">React</a></li>
+                          <li><a href="#">Spring boot</a></li>
                         </ul>
                       </li>
+                      <li><a href="#">Database</a></li>
+                      <li><a href="#">Network</a></li>
+                      <li><a href="#">OS</a></li>
+                      <li><a href="#">알고리즘</a></li>
+                      <li><a href="#">자료구조</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Parent Category</a>
+                  <li><a href="#">IT2</a>
                     <ul className="sub-menu">
-                      <li><a href="#">Child Category 1</a>
-                        <ul className="sub-menu">
-                          <li><a href="#">Sub Child Category 1</a></li>
-                          <li><a href="#">Sub Child Category 2</a></li>
-                          <li><a href="#">Sub Child Category 3</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Child Category 2</a></li>
-                      <li><a href="#">Child Category 3</a></li>
-                      <li><a href="#">Child Category 4</a></li>
+                      <li><a href="#">Docker</a></li>
+                      <li><a href="#">Jenkins</a></li>
+                      <li><a href="#">ELK</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Featured</a></li>
-                  <li><a href="#">Health</a>
+                  <li><a href="#">일상</a>
                     <ul className="sub-menu">
-                      <li><a href="#">Childcare</a></li>
-                      <li><a href="#">Doctors</a></li>
+                      <li><a href="#">맥주</a></li>
+                      <li><a href="#">NAS</a></li>
+                      <li><a href="#">끄적끄적</a></li>
                     </ul>
                   </li>
+                  <li><a href="#">소개</a></li>
                 </ul>
               </div>
             </nav>

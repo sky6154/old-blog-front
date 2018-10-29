@@ -8,6 +8,7 @@ import './font.css';
 import {Route, Switch} from "react-router-dom";
 import Main            from "./conatainers/Main";
 import RightWidget     from "./conatainers/RightWidget";
+import Post            from "./components/Post";
 
 class App extends Component {
   render(){
@@ -21,6 +22,7 @@ class App extends Component {
                   <Switch>
                     {/*<Route path="/noAuth" component={NoAuthorization} />*/}
                     <Route exact path="/" component={Main} />
+                    <Route exact path="/test" component={Post} />
                   </Switch>
                   <RightWidget/>
                 </div>
