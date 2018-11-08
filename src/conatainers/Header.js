@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect}          from "react-redux";
 import {withRouter}       from "react-router";
+import {Link}             from "react-router-dom";
 
 class Header extends Component {
   goTo(url){
@@ -17,7 +18,7 @@ class Header extends Component {
                 <div id="header-inner">
                   <div className="titlewrapper">
                     <h1 className="site-title">
-                      <a href="http://base-business.blogspot.com/">DEVELOBEER</a>
+                      <Link to="/">DEVELOBEER</Link>
                     </h1>
                   </div>
                   <h2 className="site-description">전원버튼부터 웹사이트까지</h2>
@@ -29,7 +30,7 @@ class Header extends Component {
             <nav className="main-navigationbwrap" id="site-navigationbwrap" role="navigation">
               <div className="menu-testing-menu-container">
                 <ul>
-                  <li><a href="http://base-business.blogspot.com/">Home</a></li>
+                  <li><Link to="/">Home</Link></li>
                   <li><a href="#">IT</a>
                     <ul className="sub-menu">
                       <li><a href="#">Language</a>
@@ -62,7 +63,7 @@ class Header extends Component {
                       <li><a href="#">끄적끄적</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">소개</a></li>
+                  <li><Link to="#">소개</Link></li>
                 </ul>
               </div>
             </nav>

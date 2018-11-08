@@ -4,10 +4,14 @@ import update           from 'immutability-helper';
 import CAlert           from "../../utils/alert";
 
 const initialState = {
-  post              : [],
-  postList          : [],
-  isPostFetching    : false,
-  isPostListFetching: false
+  post                     : {},
+  postList                 : [],
+  popularPostList          : [],
+  recentPostList           : [],
+  isPostFetching           : false,
+  isPostListFetching       : false,
+  isPopularPostListFetching: false,
+  isRecentPostListFetching : false
 };
 
 const actionHandlers = {
@@ -18,7 +22,7 @@ const actionHandlers = {
     const post = action.data;
 
     return Object.assign({}, state, {
-      post              : post,
+      post          : post,
       isPostFetching: false
     });
   },
@@ -28,6 +32,10 @@ const actionHandlers = {
   },
 
 
+  [actionTypes.EMPTY_POST.REQUEST]: (state, action) =>{
+    return Object.assign({}, state, {post: {}});
+  },
+
 
   [actionTypes.FETCH_POST_LIST.REQUEST]: (state, action) =>{
     return Object.assign({}, state, {isPostListFetching: true});
@@ -36,12 +44,46 @@ const actionHandlers = {
     const postList = action.data;
 
     return Object.assign({}, state, {
-      postList              : postList,
+      postList          : postList,
       isPostListFetching: false
     });
   },
   [actionTypes.FETCH_POST_LIST.FAILURE]: (state, action) =>{
     CAlert.show("게시글 목록을 가져오는데 실패하였습니다.", 'info');
+    return Object.assign({}, state, {...action});
+  },
+
+
+  [actionTypes.FETCH_POPULAR_POST_LIST.REQUEST]: (state, action) =>{
+    return Object.assign({}, state, {isPopularPostListFetching: true});
+  },
+  [actionTypes.FETCH_POPULAR_POST_LIST.SUCCESS]: (state, action) =>{
+    const popularPostList = action.data;
+
+    return Object.assign({}, state, {
+      popularPostList          : popularPostList,
+      isPopularPostListFetching: false
+    });
+  },
+  [actionTypes.FETCH_POPULAR_POST_LIST.FAILURE]: (state, action) =>{
+    CAlert.show("인기있는 게시글 목록을 가져오는데 실패하였습니다.", 'info');
+    return Object.assign({}, state, {...action});
+  },
+
+
+  [actionTypes.FETCH_RECENT_POST_LIST.REQUEST]: (state, action) =>{
+    return Object.assign({}, state, {isRecentPostListFetching: true});
+  },
+  [actionTypes.FETCH_RECENT_POST_LIST.SUCCESS]: (state, action) =>{
+    const recentPostList = action.data;
+
+    return Object.assign({}, state, {
+      recentPostList          : recentPostList,
+      isRecentPostListFetching: false
+    });
+  },
+  [actionTypes.FETCH_RECENT_POST_LIST.FAILURE]: (state, action) =>{
+    CAlert.show("최근 게시글 목록을 가져오는데 실패하였습니다.", 'info');
     return Object.assign({}, state, {...action});
   }
 };

@@ -6,25 +6,17 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 
 import {fetchPostListTrigger} from "../redux/actions/post";
-import SummaryPost        from "../components/SummaryPost";
+import SummaryPost            from "../components/SummaryPost";
+import {Link}                 from "react-router-dom";
 
 class Main extends Component {
 
   componentWillMount(){
-    // this.props.fetchPostListTrigger();
+    this.props.fetchPostListTrigger();
   }
-
-  moreClick = (data) =>{
-    let form = {};
-    form.postNum = data.postNum;
-
-    console.log(data);
-  };
 
   render(){
     const {postList} = this.props;
-
-    console.log(postList);
 
     return (
       <div className="content-areabwrap twelve columns" id="primarybwrap">
@@ -41,14 +33,15 @@ class Main extends Component {
                         postNum  : value.seq
                       };
 
-                      let summary = value.content; // need to chop
-                      let thumbnail = value.thumbnail;
+                      let {seq, regDate, author, commentCount, title,content} = value;
 
                       list.push(
-                        <SummaryPost date={value.regDate} author={value.author}
-                                             commentCount={value.commentCount} title={value.title}
-                                             summary={summary}
-                                             imageOrigin={thumbnail} />
+                        <Link to={`/post/${seq}`} key={key}>
+                            <SummaryPost date={regDate} author={author}
+                                             commentCount={commentCount} title={title}
+                                             content={content}
+                                         key={key} />
+                        </Link>
                       );
                     });
 
@@ -93,19 +86,19 @@ class Main extends Component {
 Main.defaultProps = {
   postList          : [],
   isPostListFetching: false
-}
+};
 
 Main.propTypes = {
   postList          : PropTypes.array,
   isPostListFetching: PropTypes.bool.isRequired
-}
+};
 
 function mapStateToProps(state){
   return {
     postList          : state.post.postList,
     isPostListFetching: state.post.isPostListFetching
   };
-}
+};
 
 export default withRouter(connect(mapStateToProps, {
   fetchPostListTrigger

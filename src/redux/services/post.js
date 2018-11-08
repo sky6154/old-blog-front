@@ -34,3 +34,33 @@ export const fetchPostListApi = req =>{
       throw err;
     });
 };
+
+export const fetchPopularPostListApi = req =>{
+  const apiServer = getApiServer();
+
+  console.log("FETCH POPULAR POST LIST API CALL");
+  const fullUrl = `${apiServer}/post/getPopularPost`;
+
+  return axios.get(fullUrl, createCommonRequest())
+    .then((res) =>{
+      return res.data;
+    })
+    .catch((err) =>{
+      throw err;
+    });
+};
+
+export const fetchRecentPostListApi = req =>{
+  const apiServer = getApiServer();
+
+  console.log("FETCH RECENT POST LIST API CALL");
+  const fullUrl = `${apiServer}/post/getRecentPost`;
+
+  return axios.get(fullUrl, createCommonRequest())
+    .then((res) =>{
+      return res.data;
+    })
+    .catch((err) =>{
+      throw err;
+    });
+};
