@@ -18,6 +18,7 @@ class Header extends Component {
                 <div id="header-inner">
                   <div className="titlewrapper">
                     <h1 className="site-title">
+                      <img src="https://resources.develobeer.blog/images/develobeer.png" style={{width:"25px"}} alt="develobeer"/>
                       <Link to="/">DEVELOBEER</Link>
                     </h1>
                   </div>
