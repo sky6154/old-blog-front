@@ -2,9 +2,9 @@ export const getEnv = () => {
   const host = window.location.host;
   if(host ==="localhost:3000" || host ==="localhost:3001")
     return "dev";
-  // else if(host === "test.blogbeer.blog")
+  // else if(host === "test.develobeer.blog")
   //   return "test";
-  else if(host === "blogbeer.blog")
+  else if(host === "develobeer.blog")
     return "live";
   else
     return null;
