@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 
-import Header          from './conatainers/Header';
-import Footer          from './conatainers/Footer';
+import Header          from './containers/Header';
+import Footer          from './containers/Footer';
 
 import './App.css';
 import './font.css';
 import {Route, Switch} from "react-router-dom";
-import Main            from "./conatainers/Main";
-import RightWidget     from "./conatainers/RightWidget";
+import Main            from "./containers/Main";
+import RightWidget     from "./containers/RightWidget";
 import Post            from "./components/Post";
-import Introduce       from "./conatainers/Introduce";
+import Introduce       from "./containers/Introduce";
 
 class App extends Component {
   render(){

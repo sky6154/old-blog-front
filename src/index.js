@@ -6,8 +6,8 @@ import {Provider}                     from "react-redux";
 import configureStore from "./redux/store/configureStore";
 import rootSagas      from "./redux/sagas";
 
-import App from "./App.js";
-import NotFound from "./conatainers/NotFound";
+import App      from "./App.js";
+import NotFound from "./containers/NotFound";
 
 //var injectTapEventPlugin = require("react-tap-event-plugin");
 //injectTapEventPlugin();
