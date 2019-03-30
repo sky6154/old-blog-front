@@ -1,1 +1,3 @@
-BLOG FRONT TEST
+### DEVELOBEER 사이트의 Front-end 코드 입니다.
+
+React.js 를 기반으로 짜여져 있고, 현재는 서버에서 게시글을 가져와서 뿌려주는 방식으로 구현되어 있습니다.
