@@ -72,7 +72,7 @@ class Post extends Component {
                             <span>&nbsp;by&nbsp;
                               <Link to="/introduce" rel="author"
                                  title="author profile">W.A.M. Lasantha Bandara Karunarathna</Link>&nbsp;with&nbsp;
-                              <a href="http://base-business.blogspot.com/2014/04/sample-post-with-links-paragraphs-and.html#comment-form">1 comment</a>
+                              <Link to="http://base-business.blogspot.com/2014/04/sample-post-with-links-paragraphs-and.html#comment-form">1 comment</Link>
                             </span>
                           </div>
                         </header>
@@ -82,17 +82,17 @@ class Post extends Component {
                           <div style={{clear: "both"}}></div>
                         </div>
                         <footer className="entry-metabwrap">
-                          Posted in&nbsp;<a href="http://base-business.blogspot.com/search/label/Sports"
-                                            rel="tag">Sports</a>,
-                          <a href="http://base-business.blogspot.com/search/label/Web%20Design" rel="tag">Web Design</a>
+                          Posted in&nbsp;<Link to="http://base-business.blogspot.com/search/label/Sports"
+                                            rel="tag">Sports</Link>,
+                          <Link to="http://base-business.blogspot.com/search/label/Web%20Design" rel="tag">Web Design</Link>
                         </footer>
                       </article>
                       <div style={{clear: "both"}}></div>
                       <div className="blog-pager" id="blog-pager">
                         <span id="blog-pager-older-link">
-                          <a className="blog-pager-older-link"
-                             href="http://base-business.blogspot.com/2014/04/this-is-just-going-to-be-another-test.html"
-                             id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+                          <Link className="blog-pager-older-link"
+                             to="http://base-business.blogspot.com/2014/04/this-is-just-going-to-be-another-test.html"
+                             id="Blog1_blog-pager-older-link" title="Older Post">Older Post</Link>
                         </span>
                         <Link className="home-link" to="/">Home</Link>
                       </div>

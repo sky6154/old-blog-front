@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {withRouter}           from "react-router";
-import {connect}              from "react-redux";
+import {withRouter}       from "react-router";
+import {connect}          from "react-redux";
 
 import PropTypes from "prop-types";
-import _ from "lodash";
+import _         from "lodash";
 
 import {fetchPostListTrigger} from "../redux/actions/post";
 import SummaryPost            from "../components/SummaryPost";
@@ -30,18 +30,16 @@ class Main extends Component {
                     let list = [];
                     _.forEach(postList, function (value, key){
                       let req = {
-                        postNum  : value.seq
+                        postNum: value.seq
                       };
 
-                      let {seq, regDate, author, commentCount, title,content} = value;
+                      let {seq, regDate, author, commentCount, title, content} = value;
 
                       list.push(
-                        <Link to={`/post/${seq}`} key={key}>
-                            <SummaryPost date={regDate} author={author}
-                                             commentCount={commentCount} title={title}
-                                             content={content}
-                                         key={key} />
-                        </Link>
+                        <SummaryPost date={regDate} author={author}
+                                     commentCount={commentCount} title={title}
+                                     content={content}
+                                     key={key} seq={seq} />
                       );
                     });
 
@@ -54,15 +52,15 @@ class Main extends Component {
             <div style={{clear: "both"}} />
             <div className="blog-pager" id="blog-pager">
               <span id="blog-pager-newer-link">
-                <a className="blog-pager-older-link"
-                   href="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
-                   id="Blog1_blog-pager-older-link" title="Older Posts">Newer Posts</a>
+                <Link className="blog-pager-older-link"
+                      to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
+                      id="Blog1_blog-pager-older-link" title="Older Posts">Newer Posts</Link>
               </span>
-              <a className="home-link" href="http://base-business.blogspot.com/">Home</a>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
               <span id="blog-pager-older-link">
-                <a className="blog-pager-older-link"
-                   href="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
-                   id="Blog1_blog-pager-older-link" title="Older Posts">Older Posts</a>
+                <Link className="blog-pager-older-link"
+                      to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
+                      id="Blog1_blog-pager-older-link" title="Older Posts">Older Posts</Link>
               </span>
             </div>
 
@@ -71,8 +69,8 @@ class Main extends Component {
             <div className="blog-feeds">
               <div className="feed-links">
                 Subscribe to:
-                <a className="feed-link" href="http://base-business.blogspot.com/feeds/posts/default" target="_blank"
-                   type="application/atom+xml">Posts (Atom)</a>
+                <Link className="feed-link" to="http://base-business.blogspot.com/feeds/posts/default" target="_blank"
+                      type="application/atom+xml">Posts (Atom)</Link>
               </div>
             </div>
 

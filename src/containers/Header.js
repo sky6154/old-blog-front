@@ -32,36 +32,36 @@ class Header extends Component {
               <div className="menu-testing-menu-container">
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><a href="#">IT</a>
+                  <li><Link to="#">IT</Link>
                     <ul className="sub-menu">
-                      <li><a href="#">Language</a>
+                      <li><Link to="#">Language</Link>
                         <ul className="sub-menu">
-                          <li><a href="#">JAVA</a></li>
-                          <li><a href="#">PHP</a></li>
-                          <li><a href="#">Javascript</a></li>
-                          <li><a href="#">React</a></li>
-                          <li><a href="#">Spring boot</a></li>
+                          <li><Link to="#">JAVA</Link></li>
+                          <li><Link to="#">PHP</Link></li>
+                          <li><Link to="#">Javascript</Link></li>
+                          <li><Link to="#">React</Link></li>
+                          <li><Link to="#">Spring boot</Link></li>
                         </ul>
                       </li>
-                      <li><a href="#">Database</a></li>
-                      <li><a href="#">Network</a></li>
-                      <li><a href="#">OS</a></li>
-                      <li><a href="#">알고리즘</a></li>
-                      <li><a href="#">자료구조</a></li>
+                      <li><Link to="#">Database</Link></li>
+                      <li><Link to="#">Network</Link></li>
+                      <li><Link to="#">OS</Link></li>
+                      <li><Link to="#">알고리즘</Link></li>
+                      <li><Link to="#">자료구조</Link></li>
                     </ul>
                   </li>
-                  <li><a href="#">IT2</a>
+                  <li><Link to="#">IT2</Link>
                     <ul className="sub-menu">
-                      <li><a href="#">Docker</a></li>
-                      <li><a href="#">Jenkins</a></li>
-                      <li><a href="#">ELK</a></li>
+                      <li><Link to="#">Docker</Link></li>
+                      <li><Link to="#">Jenkins</Link></li>
+                      <li><Link to="#">ELK</Link></li>
                     </ul>
                   </li>
-                  <li><a href="#">일상</a>
+                  <li><Link to="#">일상</Link>
                     <ul className="sub-menu">
-                      <li><a href="#">맥주</a></li>
-                      <li><a href="#">NAS</a></li>
-                      <li><a href="#">끄적끄적</a></li>
+                      <li><Link to="#">맥주</Link></li>
+                      <li><Link to="#">NAS</Link></li>
+                      <li><Link to="#">끄적끄적</Link></li>
                     </ul>
                   </li>
                   <li><Link to="#">소개</Link></li>

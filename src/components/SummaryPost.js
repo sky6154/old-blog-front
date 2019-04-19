@@ -1,9 +1,10 @@
-import React, {Component} from "react";
-import {connect}          from "react-redux";
-import {withRouter}       from "react-router";
-import _                  from "lodash";
-import findImage          from "../utils/findImage";
+import React, {Component}          from "react";
+import {connect}                   from "react-redux";
+import {withRouter}                from "react-router";
+import _                           from "lodash";
+import findImage                   from "../utils/findImage";
 import removeHtmlTagAndMakeSummary from "../utils/removeHtmlTagAndMakeSummary";
+import Link                        from "react-router-dom/es/Link";
 
 class SummaryPost extends Component {
   goTo(url){
@@ -42,15 +43,13 @@ class SummaryPost extends Component {
                 <article className="post hentry">
                   <header className="entry-header">
                     <h2 className="post-title entry-title">
-                      <a
-                        href="http://base-business.blogspot.com/2014/03/keeping-title-length-equal-for-home.html">{title}</a>
+                      <Link to={`/post/${this.props.seq}`}>{title}</Link>
                     </h2>
                     <div className="entry-metabwrap">
                       <span>Posted on {date}</span>
                       <span>&nbsp;by&nbsp;
-                        <a href="https://plus.google.com/102090464826236196083" rel="author"
-                           title="author profile">{author}</a>&nbsp;with&nbsp;
-                        <a href="http://base-business.blogspot.com/2014/03/keeping-title-length-equal-for-home.html#comment-form">{this.commentString(commentCount)}</a></span>
+                        <Link to={`/post/${this.props.seq}`} rel="author" title="author profile">{author}</Link>&nbsp;with&nbsp;
+                        <Link to={`/post/${this.props.seq}`}>{this.commentString(commentCount)}</Link></span>
                     </div>
                   </header>
                   <div style={{clear: "both"}}></div>
@@ -62,15 +61,14 @@ class SummaryPost extends Component {
                       {summary}
                     </div>
                     <div style={{float: "right", paddingRight: "10px", marginTop: "10px", fontSize: "1.4rem"}}>
-                      <a className="morer"
-                         href="http://base-business.blogspot.com/2014/03/keeping-title-length-equal-for-home.html">Read More</a>
+                      <Link className="morer" to={`/post/${this.props.seq}`}>Read More</Link>
                     </div>
                     <div style={{clear: "both"}}></div>
                   </div>
                   <footer className="entry-metabwrap">
-                    Posted in&nbsp;<a href="http://base-business.blogspot.com/search/label/Sports"
-                                      rel="tag">Sports</a>, <a
-                    href="http://base-business.blogspot.com/search/label/Web%20Design" rel="tag">Web Design</a>
+                    Posted in&nbsp;
+                    {/*<Link to={`/post/${this.props.seq}`} rel="tag">Sports</Link>,*/}
+                    {/*<Link to={`/post/${this.props.seq}`} rel="tag">Web Design</Link>*/}
                   </footer>
                 </article>
                 <div style={{clear: "both"}}></div>

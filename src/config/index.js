@@ -15,7 +15,7 @@ export const getApiServer = () => {
   let apiServer = "";
 
   if(getEnv() === "dev"){
-    apiServer = 'http://localhost:8080';
+    apiServer = 'http://localhost:8090';
   }
   else if(getEnv() === "test"){
     apiServer = 'https://test.develobeer.blog';

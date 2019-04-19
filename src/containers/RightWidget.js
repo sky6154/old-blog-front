@@ -107,35 +107,6 @@ class RightWidget extends Component {
             </div>
             <div className="clear"></div>
           </div>
-          {/*<div className="widget Label" data-version="1" id="Label1">*/}
-            {/*<h2>Categories</h2>*/}
-            {/*<div className="widget-content list-label-widget-content">*/}
-              {/*<ul>*/}
-                {/*<li>*/}
-                  {/*<a dir="ltr" href="http://base-business.blogspot.com/search/label/Entertainment">Entertainment</a>*/}
-                  {/*<span dir="ltr">(1)</span>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                  {/*<a dir="ltr" href="http://base-business.blogspot.com/search/label/Graphic%20Design">Graphic Design</a>*/}
-                  {/*<span dir="ltr">(3)</span>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                  {/*<a dir="ltr" href="http://base-business.blogspot.com/search/label/HTML%20Elements">HTML Elements</a>*/}
-                  {/*<span dir="ltr">(1)</span>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                  {/*<a dir="ltr" href="http://base-business.blogspot.com/search/label/Sports">Sports</a>*/}
-                  {/*<span dir="ltr">(4)</span>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                  {/*<a dir="ltr" href="http://base-business.blogspot.com/search/label/Web%20Design">Web Design</a>*/}
-                  {/*<span dir="ltr">(4)</span>*/}
-                {/*</li>*/}
-              {/*</ul>*/}
-              {/*<div className="clear"></div>*/}
-              {/*<div className="clear"></div>*/}
-            {/*</div>*/}
-          {/*</div>*/}
           <div className="widget Text" data-version="1" id="Text2">
             <h2 className="title">Text Widget</h2>
             <div className="widget-content">
@@ -144,28 +115,6 @@ class RightWidget extends Component {
             <div className="clear"></div>
             <div className="clear"></div>
           </div>
-          {/*<div className="widget BlogArchive" data-version="1" id="BlogArchive1">*/}
-            {/*<h2>Blog Archive</h2>*/}
-            {/*<div className="widget-content">*/}
-              {/*<div id="ArchiveList">*/}
-                {/*<div id="BlogArchive1_ArchiveList">*/}
-                  {/*<select id="BlogArchive1_ArchiveMenu">*/}
-                    {/*<option value="">Blog Archive</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2014/04/">April (2)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2014/03/">March (3)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2014/02/">February (2)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2014/01/">January (2)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2013/12/">December (2)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2013/11/">November (1)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2013/10/">October (1)</option>*/}
-                    {/*<option value="http://base-business.blogspot.com/2013/04/">April (1)</option>*/}
-                  {/*</select>*/}
-                {/*</div>*/}
-              {/*</div>*/}
-              {/*<div className="clear"></div>*/}
-              {/*<div className="clear"></div>*/}
-            {/*</div>*/}
-          {/*</div>*/}
         </div>
       </div>
     );
