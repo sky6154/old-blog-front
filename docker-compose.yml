@@ -1,14 +1,20 @@
 version: '3'
 
 services:
-        my_blog_front:
-                build:
-                        context: .
-                        
-                image: blog-front:latest
+  my_blog_front:
+    build:
+      context: .
 
-                container_name: myBlogFront
+    image: blog-front:latest
 
-                ports:
-                       - "80:80"
+    container_name: myBlogFront
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+    ports:
+      - "80:80"
                        
