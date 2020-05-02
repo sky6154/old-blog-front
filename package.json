@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "immutability-helper": "^2.4.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "qs": "^6.5.1",
