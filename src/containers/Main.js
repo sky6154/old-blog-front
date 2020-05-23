@@ -10,10 +10,15 @@ import SummaryPost            from "../components/SummaryPost";
 import {Link}                 from "react-router-dom";
 
 class Main extends Component {
+  static PAGE_SIZE = 5;
 
   componentWillMount(){
     this.props.fetchPostListTrigger();
   }
+
+  showPost = (count) => {
+
+  };
 
   render(){
     const {postList} = this.props;
@@ -52,15 +57,20 @@ class Main extends Component {
             <div style={{clear: "both"}} />
             <div className="blog-pager" id="blog-pager">
               <span id="blog-pager-newer-link">
-                <Link className="blog-pager-older-link"
+                <Link className="blog-pager-newer-link"
                       to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
-                      id="Blog1_blog-pager-older-link" title="Older Posts">Newer Posts</Link>
+                      id="Blog1_blog-pager-newer-link" title="Newer Posts">{"<<<"}</Link>
               </span>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
+              <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
               <Link className="home-link" to="http://base-business.blogspot.com/">Home</Link>
               <span id="blog-pager-older-link">
                 <Link className="blog-pager-older-link"
                       to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"
-                      id="Blog1_blog-pager-older-link" title="Older Posts">Older Posts</Link>
+                      id="Blog1_blog-pager-older-link" title="Older Posts">{">>>"}</Link>
               </span>
             </div>
 

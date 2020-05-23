@@ -39,7 +39,7 @@ export const fetchPopularPostListApi = req =>{
   const apiServer = getApiServer();
 
   console.log("FETCH POPULAR POST LIST API CALL");
-  const fullUrl = `${apiServer}/post/getPopularPost`;
+  const fullUrl = `${apiServer}/post/get/popular`;
 
   return axios.get(fullUrl, createCommonRequest())
     .then((res) =>{
@@ -54,7 +54,7 @@ export const fetchRecentPostListApi = req =>{
   const apiServer = getApiServer();
 
   console.log("FETCH RECENT POST LIST API CALL");
-  const fullUrl = `${apiServer}/post/getRecentPost`;
+  const fullUrl = `${apiServer}/post/get/recent`;
 
   return axios.get(fullUrl, createCommonRequest())
     .then((res) =>{

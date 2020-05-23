@@ -21,7 +21,6 @@ class App extends Component {
               <div className="wide contenitor">
                 <div className="site-contentbwrap container">
                   <Switch>
-                    {/*<Route path="/noAuth" component={NoAuthorization} />*/}
                     <Route exact path="/" component={Main} />
                     <Route exact path="/post/:id" component={Post} />
                     <Route exact path="/introduce" component={Introduce} />

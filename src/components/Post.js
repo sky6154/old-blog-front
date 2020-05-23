@@ -7,8 +7,6 @@ import moment             from "moment";
 import {fetchPostTrigger, emptyPostTrigger} from "../redux/actions/post";
 import PropTypes          from "prop-types";
 import {Link}             from "react-router-dom";
-import findImage          from "../utils/findImage";
-
 
 class Post extends Component {
   constructor(props){

@@ -2,8 +2,6 @@ export const getEnv = () => {
   const host = window.location.host;
   if(host ==="localhost:3000" || host ==="localhost:3001")
     return "dev";
-  // else if(host === "test.develobeer.blog")
-  //   return "test";
   else if(host === "develobeer.blog")
     return "live";
   else
@@ -16,9 +14,6 @@ export const getApiServer = () => {
 
   if(getEnv() === "dev"){
     apiServer = 'http://localhost:8090';
-  }
-  else if(getEnv() === "test"){
-    apiServer = 'https://test.develobeer.blog';
   }
   else if(getEnv() === "live"){
     apiServer = 'https://api.develobeer.blog';
