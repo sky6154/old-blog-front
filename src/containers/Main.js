@@ -16,8 +16,27 @@ class Main extends Component {
     this.props.fetchPostListTrigger();
   }
 
-  showPost = (count) => {
+  showPost = (postList) => {
+    if(!_.isEmpty(postList)){
 
+      let list = [];
+      _.forEach(postList, function (value, key){
+        let req = {
+          postNum: value.seq
+        };
+
+        let {seq, regDate, author, commentCount, title, content} = value;
+
+        list.push(
+            <SummaryPost date={regDate} author={author}
+                         commentCount={commentCount} title={title}
+                         content={content}
+                         key={key} seq={seq} />
+        );
+      });
+
+      return list;
+    }
   };
 
   render(){
@@ -29,28 +48,7 @@ class Main extends Component {
           <div className="mainblogsec section" id="mainblogsec">
             <div className="widget Blog" data-version="1">
               <div className="blog-posts hfeed">
-                {(() =>{
-                  if(!_.isEmpty(postList)){
-
-                    let list = [];
-                    _.forEach(postList, function (value, key){
-                      let req = {
-                        postNum: value.seq
-                      };
-
-                      let {seq, regDate, author, commentCount, title, content} = value;
-
-                      list.push(
-                        <SummaryPost date={regDate} author={author}
-                                     commentCount={commentCount} title={title}
-                                     content={content}
-                                     key={key} seq={seq} />
-                      );
-                    });
-
-                    return list;
-                  }
-                })()}
+                {this.showPost(postList)}
               </div>
             </div>
 

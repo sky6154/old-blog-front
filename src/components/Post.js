@@ -67,11 +67,12 @@ class Post extends Component {
                           </h2>
                           <div className="entry-metabwrap">
                             <span>Posted on {regDate}</span>
-                            <span>&nbsp;by&nbsp;
-                              <Link to="/introduce" rel="author"
-                                 title="author profile">W.A.M. Lasantha Bandara Karunarathna</Link>&nbsp;with&nbsp;
-                              <Link to="http://base-business.blogspot.com/2014/04/sample-post-with-links-paragraphs-and.html#comment-form">1 comment</Link>
-                            </span>
+                            {/*<span>&nbsp;by&nbsp;*/}
+                              {/*<Link to="/introduce" rel="author"*/}
+                              {/*   title="author profile">develobeer</Link>*/}
+                              {/*&nbsp;with&nbsp;*/}
+                              {/*<Link to="#">1 comment</Link>*/}
+                            {/*</span>*/}
                           </div>
                         </header>
                         <div className="post-header-line-1"></div>
