@@ -703,7 +703,7 @@ a:active {
   padding-bottom:2em !important;
 }
 .wide.contenitor{
-  background: url(http://3.bp.blogspot.com/-VfDy20nDl2I/U1y7t2P1-OI/AAAAAAAAIsU/FfpSkeed08c/s1600/shadow.png) top center no-repeat;
+  background: url(https://resources.develobeer.blog/images/shadow.png) top center no-repeat;
 }
 /*--------------------------------------------------------------
 10.1 Posts and pages
@@ -762,13 +762,13 @@ object {
 13.0 Footer
 --------------------------------------------------------------*/
 .site-footerbwrap {
-  background: url(http://3.bp.blogspot.com/-VfDy20nDl2I/U1y7t2P1-OI/AAAAAAAAIsU/FfpSkeed08c/s1600/shadow.png) top center no-repeat #222832;
+  background: url(https://resources.develobeer.blog/images/shadow.png) top center no-repeat #222832;
   padding:1em 0em 0em 0em;
   border-top: 20px solid #1a1d26;
 }
 .site-infobwrap {
   text-align:center;
-  background: url(http://2.bp.blogspot.com/-pQTDmqwIUT4/U1y7sxbzc8I/AAAAAAAAIsI/1f-_NntCrJY/s1600/shadow-footer.png) top center no-repeat #1a1d26;
+  background: url(https://resources.develobeer.blog/images/shadow-footer.png) top center no-repeat #1a1d26;
   padding:1em !important;
 }
 .site-infobwrap a {}
