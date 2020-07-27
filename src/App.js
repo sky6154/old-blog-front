@@ -22,6 +22,7 @@ class App extends Component {
                 <div className="site-contentbwrap container">
                   <Switch>
                     <Route exact path="/" component={Main} />
+                    <Route exact path="/:boardId" component={Main} />
                     <Route exact path="/post/:id" component={Post} />
                     <Route exact path="/introduce" component={Introduce} />
                   </Switch>

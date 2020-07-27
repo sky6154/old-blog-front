@@ -9,13 +9,18 @@ import findImage from "../utils/findImage";
 import {Link} from "react-router-dom";
 
 class RightWidget extends Component {
-    componentWillMount() {
-        this.props.fetchPopularPostListTrigger();
-        this.props.fetchRecentPostListTrigger();
+
+    constructor(props){
+        super(props);
 
         this.state = {
             searchText: ""
         }
+    }
+
+    componentWillMount() {
+        this.props.fetchPopularPostListTrigger();
+        this.props.fetchRecentPostListTrigger();
     }
 
     goTo(url) {
@@ -32,7 +37,6 @@ class RightWidget extends Component {
             let items = [];
             _.forEach(list, function (value, key) {
                 let {seq, title, content} = value;
-
                 let thumbnail = findImage(content);
 
                 if (!_.isEmpty(thumbnail)) {
@@ -121,14 +125,14 @@ class RightWidget extends Component {
                         </div>
 
                     </div>
-                    <div className="widget HTML" data-version="1" id="HTML1">
+                    <div className="widget HTML" data-version="1">
                         <h2 className="title">Recent Posts</h2>
                         <div className="widget-content">
                             {this.recentPost(recentPostList)}
                         </div>
                         <div className="clear"></div>
                     </div>
-                    <div className="widget Text" data-version="1" id="Text2">
+                    <div className="widget Text" data-version="1">
                         <h2 className="title">Text Widget</h2>
                         <div className="widget-content">
                             개발, PHP, JAVA, Mysql, DB, Network, OS, Docker, Nginx, Spring boot, Jenkins, React

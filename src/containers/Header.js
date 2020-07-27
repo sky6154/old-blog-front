@@ -4,10 +4,6 @@ import {withRouter}       from "react-router";
 import {Link}             from "react-router-dom";
 
 class Header extends Component {
-  goTo(url){
-    this.props.history.push(url);
-  }
-
   render(){
     return (
       <header className="site-headerbwrap" id="mastheadbwrap" role="banner">
@@ -32,9 +28,9 @@ class Header extends Component {
               <div className="menu-testing-menu-container">
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><Link to="#">IT</Link>
+                  <li><Link to="#">개발</Link>
                     <ul className="sub-menu">
-                      <li><Link to="#">Language</Link>
+                      <li><Link to="#">언어</Link>
                         <ul className="sub-menu">
                           <li><Link to="#">JAVA</Link></li>
                           <li><Link to="#">PHP</Link></li>
@@ -43,25 +39,34 @@ class Header extends Component {
                           <li><Link to="#">Spring boot</Link></li>
                         </ul>
                       </li>
-                      <li><Link to="#">Database</Link></li>
+                      <li><Link to="#">Storage</Link>
+                        <ul className="sub-menu">
+                          <li><Link to="#">Oracle</Link></li>
+                          <li><Link to="#">Mysql</Link></li>
+                          <li><Link to="#">Mssql</Link></li>
+                          <li><Link to="#">Redis</Link></li>
+                        </ul>
+                      </li>
                       <li><Link to="#">Network</Link></li>
                       <li><Link to="#">OS</Link></li>
                       <li><Link to="#">알고리즘</Link></li>
                       <li><Link to="#">자료구조</Link></li>
-                    </ul>
-                  </li>
-                  <li><Link to="#">IT2</Link>
-                    <ul className="sub-menu">
                       <li><Link to="#">Docker</Link></li>
                       <li><Link to="#">Jenkins</Link></li>
-                      <li><Link to="#">ELK</Link></li>
+                      <li><Link to="#">Nginx</Link></li>
+                      {/*<li><Link to="#">ELK</Link></li>*/}
                     </ul>
                   </li>
                   <li><Link to="#">일상</Link>
                     <ul className="sub-menu">
                       <li><Link to="#">맥주</Link></li>
-                      <li><Link to="#">NAS</Link></li>
-                      <li><Link to="#">끄적끄적</Link></li>
+                      <li><Link to="#">캠핑</Link></li>
+                      <li><Link to="#">커피</Link></li>
+                    </ul>
+                  </li>
+                  <li><Link to="#">부제</Link>
+                    <ul className="sub-menu">
+                      <li><Link to="#">전원버튼부터 웹사이트까지</Link></li>
                     </ul>
                   </li>
                   <li><Link to="#">소개</Link></li>

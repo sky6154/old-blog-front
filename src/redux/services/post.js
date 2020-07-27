@@ -22,9 +22,14 @@ export const fetchPostApi = req =>{
 
 export const fetchPostListApi = req =>{
   const apiServer = getApiServer();
+  let {page} = req;
+
+  if(!page){
+    page = 0;
+  }
 
   console.log("FETCH POST LIST API CALL");
-  const fullUrl = `${apiServer}/post/getAll`;
+  const fullUrl = `${apiServer}/board/${req.boardId}/get?page=${page}`;
 
   return axios.get(fullUrl, createCommonRequest())
     .then((res) =>{

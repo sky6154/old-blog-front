@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect}          from "react-redux";
 import {withRouter}       from "react-router";
 import _                  from "lodash";
-import moment             from "moment";
+import moment             from "moment-timezone";
 
 import {fetchPostTrigger, emptyPostTrigger} from "../redux/actions/post";
 import PropTypes          from "prop-types";
@@ -12,31 +12,28 @@ class Post extends Component {
   constructor(props){
     super(props);
 
-    let postNum = this.props.match.params.id;
+    this.state = {
+      postNum :  this.props.match.params.id
+    };
 
-    if(!_.isNil(postNum)){
+    if(!_.isNil(this.state.postNum)){
       let req = {
-        postNum : postNum
+        postNum : this.state.postNum
       };
 
       this.props.fetchPostTrigger(req);
     }
   }
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    if(prevProps.match.params.id !== this.props.match.params.id){
-      let req = {
-        postNum : this.props.match.params.id
-      };
-
-      this.props.fetchPostTrigger(req);
+  static getDerivedStateFromProps(props, state){
+    if(props.match.params.id !== state.postNum){
+      return {
+        postNum : props.match.params.id
+      }
     }
-
-    return null;
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot){
-
+    else{
+      return null;
+    }
   }
 
   componentWillUnmount(){
@@ -46,14 +43,13 @@ class Post extends Component {
   render(){
     let {boardID, content, hits, isDelete, modifyDate, regDate, seq, title} = this.props.post;
 
-    modifyDate = moment(modifyDate).format('LLLL');
-    regDate = moment(regDate).format('LLLL');
+    regDate = moment(regDate).tz("Asia/Seoul").format('LLLL');
 
     return (
-      <div className="content-areabwrap twelve columns" id="primarybwrap">
-        <div className="site-mainbwrap" id="mainbwrap" role="main">
-          <div className="mainblogsec section" id="mainblogsec">
-            <div className="widget Blog" data-version="1" id="Blog1">
+      <div className="content-areabwrap twelve columns">
+        <div className="site-mainbwrap" role="main">
+          <div className="mainblogsec section">
+            <div className="widget Blog" data-version="1">
               <div className="blog-posts hfeed">
                 <div className="date-outer">
                   <h2 className="date-header">
@@ -67,12 +63,12 @@ class Post extends Component {
                           </h2>
                           <div className="entry-metabwrap">
                             <span>Posted on {regDate}</span>
-                            {/*<span>&nbsp;by&nbsp;*/}
-                              {/*<Link to="/introduce" rel="author"*/}
-                              {/*   title="author profile">develobeer</Link>*/}
+                            <span>&nbsp;by&nbsp;
+                              <Link to="/introduce" rel="author"
+                                 title="author profile">develobeer</Link>
                               {/*&nbsp;with&nbsp;*/}
                               {/*<Link to="#">1 comment</Link>*/}
-                            {/*</span>*/}
+                            </span>
                           </div>
                         </header>
                         <div className="post-header-line-1"></div>
