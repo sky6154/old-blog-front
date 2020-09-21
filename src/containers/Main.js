@@ -3,98 +3,85 @@ import {withRouter} from "react-router";
 import {connect} from "react-redux";
 
 import PropTypes from "prop-types";
-import _ from "lodash";
+import queryString from "query-string";
 
 import {fetchPostListTrigger} from "../redux/actions/post";
 import PostList from "./PostList";
 
 class Main extends Component {
-  static PAGE_SIZE = 5;
+    static DEFAULT_BOARD_ID = 0;
+    static DEFAULT_PAGE = 1;
 
-  constructor(props){
-    super(props);
-
-    this.state = {
-      boardId: (!_.isNil(this.props.match.params.boardId)) ? this.props.match.params.boardId : 0
+    constructor(props) {
+        super(props);
     }
 
-  }
+    componentDidMount() {
+        const parsed = queryString.parse(this.props.location.search);
 
-  componentWillMount(){
-    const req = {
-      boardId : this.state.boardId,
-      page : 1
-    };
+        const req = {
+            boardId: (parsed.boardId) ? parsed.boardId : Main.DEFAULT_BOARD_ID,
+            page: (parsed.page) ? parsed.page : 1,
+        };
 
-    this.props.fetchPostListTrigger(req);
-  }
+        this.props.fetchPostListTrigger(req);
+    }
 
-  render(){
-    const {postListInfo} = this.props;
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const parsed = queryString.parse(this.props.location.search);
+        const prevParsed = queryString.parse(prevProps.location.search);
 
+        const req = {
+            boardId: (parsed.boardId) ? parsed.boardId : Main.DEFAULT_BOARD_ID,
+            page: (parsed.page) ? parsed.page : Main.DEFAULT_PAGE,
+        };
 
-    return (
-      <div className="content-areabwrap twelve columns">
-        <div className="site-mainbwrap" role="main">
-          <div className="mainblogsec section">
-            <PostList pageable={postListInfo} boardId={this.state.boardId} />
+        const prevReq = {
+            boardId: (prevParsed.boardId) ? prevParsed.boardId : Main.DEFAULT_BOARD_ID,
+            page: (prevParsed.page) ? prevParsed.page : Main.DEFAULT_PAGE,
+        };
 
-            {/* paging */}
-            {/*<div style={{clear: "both"}} />*/}
-            {/*<div className="blog-pager" id="blog-pager">*/}
-            {/*  <span id="blog-pager-newer-link">*/}
-            {/*    <Link className="blog-pager-newer-link"*/}
-            {/*          to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"*/}
-            {/*          id="Blog1_blog-pager-newer-link" title="Newer Posts">{"<<<"}</Link>*/}
-            {/*  </span>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <Link to="#">&nbsp;1&nbsp;</Link>*/}
-            {/*  <span id="blog-pager-older-link">*/}
-            {/*    <Link className="blog-pager-older-link"*/}
-            {/*          to="http://base-business.blogspot.com/search?updated-max=2014-03-04T17:59:00-08:00&amp;max-results=5"*/}
-            {/*          id="Blog1_blog-pager-older-link" title="Older Posts">{">>>"}</Link>*/}
-            {/*  </span>*/}
-            {/*</div>*/}
+        if (prevReq.boardId !== req.boardId || prevReq.page !== req.page) {
+            this.props.fetchPostListTrigger(req);
+        }
+    }
 
-            <br />
-            {/*<div className="clear"></div>*/}
-            {/*<div className="blog-feeds">*/}
-            {/*  <div className="feed-links">*/}
-            {/*    Subscribe to:*/}
-            {/*    <Link className="feed-link" to="http://base-business.blogspot.com/feeds/posts/default" target="_blank"*/}
-            {/*          type="application/atom+xml">Posts (Atom)</Link>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
+    render() {
+        const {postListInfo} = this.props;
 
-          </div>
-        </div>
-      </div>
-    )
-  }
+        const parsed = queryString.parse(this.props.location.search);
+        const boardId = (parsed.boardId) ? parsed.boardId : Main.DEFAULT_BOARD_ID;
+
+        return (
+            <div className="content-areabwrap twelve columns">
+                <div className="site-mainbwrap" role="main">
+                    <div className="mainblogsec section">
+                        <PostList postListInfo={postListInfo} boardId={boardId}/>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 
 Main.defaultProps = {
-  postList          : [],
-  isPostListFetching: false
+    postList: [],
+    isPostListFetching: false
 };
 
 Main.propTypes = {
-  postList          : PropTypes.array,
-  isPostListFetching: PropTypes.bool.isRequired
+    postList: PropTypes.array,
+    isPostListFetching: PropTypes.bool.isRequired
 };
 
-function mapStateToProps(state){
-  return {
-    postListInfo          : state.post.postListInfo,
-    isPostListFetching: state.post.isPostListFetching
-  };
+function mapStateToProps(state) {
+    return {
+        postListInfo: state.post.postListInfo,
+        isPostListFetching: state.post.isPostListFetching
+    };
 };
 
 export default withRouter(connect(mapStateToProps, {
-  fetchPostListTrigger
+    fetchPostListTrigger
 })(Main));

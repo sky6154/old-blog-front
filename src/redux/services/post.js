@@ -1,13 +1,10 @@
 import axios from "axios";
-import _ from "lodash";
 
 import {getApiServer} from "../../config/index";
 import createCommonRequest from "../utils/createCommonRequest";
 
 export const fetchPostApi = req =>{
   const apiServer = getApiServer();
-
-  console.log("FETCH POST API CALL");
   const fullUrl = `${apiServer}/post/${req.postNum}`;
 
   return axios.get(fullUrl, createCommonRequest())
@@ -22,14 +19,9 @@ export const fetchPostApi = req =>{
 
 export const fetchPostListApi = req =>{
   const apiServer = getApiServer();
-  let {page} = req;
+  let page = (req.page) ? req.page : 0;
 
-  if(!page){
-    page = 0;
-  }
-
-  console.log("FETCH POST LIST API CALL");
-  const fullUrl = `${apiServer}/board/${req.boardId}/get?page=${page}`;
+  const fullUrl = `${apiServer}/board/get?boardId=${req.boardId}&page=${page}`;
 
   return axios.get(fullUrl, createCommonRequest())
     .then((res) =>{
@@ -42,8 +34,6 @@ export const fetchPostListApi = req =>{
 
 export const fetchPopularPostListApi = req =>{
   const apiServer = getApiServer();
-
-  console.log("FETCH POPULAR POST LIST API CALL");
   const fullUrl = `${apiServer}/post/get/popular`;
 
   return axios.get(fullUrl, createCommonRequest())
@@ -57,8 +47,6 @@ export const fetchPopularPostListApi = req =>{
 
 export const fetchRecentPostListApi = req =>{
   const apiServer = getApiServer();
-
-  console.log("FETCH RECENT POST LIST API CALL");
   const fullUrl = `${apiServer}/post/get/recent`;
 
   return axios.get(fullUrl, createCommonRequest())

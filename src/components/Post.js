@@ -41,9 +41,9 @@ class Post extends Component {
   }
 
   render(){
-    let {boardID, content, hits, isDelete, modifyDate, regDate, seq, title} = this.props.post;
+    const {boardId, content, hits, isDelete, modifyDate, regDate, seq, title, boardName} = this.props.post;
 
-    regDate = moment(regDate).tz("Asia/Seoul").format('LLLL');
+    let showDate = moment(regDate).tz("Asia/Seoul").format('LLLL');
 
     return (
       <div className="content-areabwrap twelve columns">
@@ -53,21 +53,21 @@ class Post extends Component {
               <div className="blog-posts hfeed">
                 <div className="date-outer">
                   <h2 className="date-header">
-                    <span>{regDate}</span></h2>
+                    <span>{showDate}</span></h2>
                   <div className="date-posts">
                     <div className="post-outer">
                       <article className="post hentry">
                         <header className="entry-header">
                           <h2 className="post-title entry-title">
-                            <Link to="/">{title}</Link>
+                            {title}
                           </h2>
                           <div className="entry-metabwrap">
-                            <span>Posted on {regDate}</span>
+                            <span>Posted on {showDate}</span>
                             <span>&nbsp;by&nbsp;
                               <Link to="/introduce" rel="author"
                                  title="author profile">develobeer</Link>
                               {/*&nbsp;with&nbsp;*/}
-                              {/*<Link to="#">1 comment</Link>*/}
+                              {/*<Link to="#">0 comment</Link>*/}
                             </span>
                           </div>
                         </header>
@@ -77,20 +77,19 @@ class Post extends Component {
                           <div style={{clear: "both"}}></div>
                         </div>
                         <footer className="entry-metabwrap">
-                          Posted in&nbsp;<Link to="http://base-business.blogspot.com/search/label/Sports"
-                                            rel="tag">Sports</Link>,
-                          <Link to="http://base-business.blogspot.com/search/label/Web%20Design" rel="tag">Web Design</Link>
+                          Posted in&nbsp;<Link to={"/?boardId=" + boardId}
+                                            rel="tag">{boardName}</Link>
                         </footer>
                       </article>
                       <div style={{clear: "both"}}></div>
-                      <div className="blog-pager" id="blog-pager">
-                        <span id="blog-pager-older-link">
-                          <Link className="blog-pager-older-link"
-                             to="http://base-business.blogspot.com/2014/04/this-is-just-going-to-be-another-test.html"
-                             id="Blog1_blog-pager-older-link" title="Older Post">Older Post</Link>
-                        </span>
-                        <Link className="home-link" to="/">Home</Link>
-                      </div>
+                      {/*<div className="blog-pager" id="blog-pager">*/}
+                      {/*  <span id="blog-pager-older-link">*/}
+                      {/*    <Link className="blog-pager-older-link"*/}
+                      {/*       to="http://base-business.blogspot.com/2014/04/this-is-just-going-to-be-another-test.html"*/}
+                      {/*       id="Blog1_blog-pager-older-link" title="Older Post">Older Post</Link>*/}
+                      {/*  </span>*/}
+                      {/*  <Link className="home-link" to="/">Home</Link>*/}
+                      {/*</div>*/}
                       <div className="clear"></div>
                     </div>
                   </div>

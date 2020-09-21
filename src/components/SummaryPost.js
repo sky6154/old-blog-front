@@ -17,7 +17,7 @@ class SummaryPost extends Component {
     };
 
     render() {
-        let {date, author, commentCount, title, content} = this.props;
+        let {date, author, commentCount, title, content, boardId, boardName} = this.props;
         let postDate = moment(date).tz("Asia/Seoul").format('YYYY-MM-DD HH:mm');
 
         let thumbnail = findImage(content);
@@ -46,19 +46,22 @@ class SummaryPost extends Component {
                                         <div className="entry-metabwrap">
                                             <span>Posted on {postDate}</span>
                                             <span>&nbsp;by&nbsp;
-                                                <Link to={`/post/${this.props.seq}`} rel="author"
-                                                      title="author profile">{author}</Link>&nbsp;with&nbsp;
-                                                <Link
-                                                    to={`/post/${this.props.seq}`}>{this.commentString(commentCount)}</Link>
+                                                <Link to={`/introduce`} rel="author"
+                                                      title="author profile">{author}</Link>
+                                                {/*&nbsp;with&nbsp;*/}
+                                                {/*<Link*/}
+                                                {/*    to={`/post/${this.props.seq}`}>{this.commentString(commentCount)}</Link>*/}
                                             </span>
                                         </div>
                                     </header>
                                     <div style={{clear: "both"}}></div>
                                     <div className="post-body entry-content">
                                         <div>
-                                            <div className="separator" style={{clear: "both", textAlign: "center"}}>
-                                                <img src={thumbnail} className="pbtthumbimg" alt={""}/>
-                                            </div>
+                                            { thumbnail &&
+                                                <div className="separator" style={{clear: "both", textAlign: "center"}}>
+                                                    <img src={thumbnail} className="pbtthumbimg" alt={""}/>
+                                                </div>
+                                            }
                                             {summary}
                                         </div>
                                         <div style={{
@@ -73,8 +76,7 @@ class SummaryPost extends Component {
                                     </div>
                                     <footer className="entry-metabwrap">
                                         Posted in&nbsp;
-                                        {/*<Link to={`/post/${this.props.seq}`} rel="tag">Sports</Link>,*/}
-                                        {/*<Link to={`/post/${this.props.seq}`} rel="tag">Web Design</Link>*/}
+                                        <Link to={`/?boardId=${boardId}`} rel="tag">{boardName}</Link>
                                     </footer>
                                 </article>
                                 <div style={{clear: "both"}}></div>

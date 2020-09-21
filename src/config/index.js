@@ -19,7 +19,5 @@ export const getApiServer = () => {
     apiServer = 'https://api.develobeer.blog';
   }
 
-  console.log("api : " + apiServer);
-
   return apiServer;
 };

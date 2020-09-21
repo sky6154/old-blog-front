@@ -13,12 +13,14 @@ class PostList extends Component {
         if(!_.isEmpty(postList)){
             let list = [];
             _.forEach(postList, function (value, key){
-                let {seq, regDate, author, commentCount, title, content} = value;
+                let {seq, regDate, author, commentCount, title, content, boardId, boardName} = value;
 
                 list.push(
                     <SummaryPost date={regDate} author={author}
                                  commentCount={commentCount} title={title}
                                  content={content}
+                                 boardId={boardId}
+                                 boardName={boardName}
                                  key={key} seq={seq} />
                 );
             });
@@ -31,16 +33,15 @@ class PostList extends Component {
     };
 
     render(){
-
-        const {pageable, boardId} = this.props;
-        const postList = (_.isNil(pageable.content)) ? [] : pageable.content;
+        const {postListInfo, boardId} = this.props;
+        const postList = (_.isNil(postListInfo.content)) ? [] : postListInfo.content;
 
         return (
             <div className="widget Blog" data-version="1">
                 <div className="blog-posts hfeed">
                     {this.showPost(postList)}
                 </div>
-                <Paging boardId={boardId} pageable={pageable} />
+                <Paging boardId={boardId} postListInfo={postListInfo} />
             </div>
         )
     }

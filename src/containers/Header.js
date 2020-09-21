@@ -28,48 +28,49 @@ class Header extends Component {
               <div className="menu-testing-menu-container">
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><Link to="#">개발</Link>
+                  <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>개발</Link>
                     <ul className="sub-menu">
-                      <li><Link to="#">언어</Link>
+                      <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>언어</Link>
                         <ul className="sub-menu">
-                          <li><Link to="#">JAVA</Link></li>
-                          <li><Link to="#">PHP</Link></li>
-                          <li><Link to="#">Javascript</Link></li>
-                          <li><Link to="#">React</Link></li>
-                          <li><Link to="#">Spring boot</Link></li>
+                          <li><Link to="/?boardId=1">JAVA</Link></li>
+                          <li><Link to="/?boardId=2">PHP</Link></li>
+                          <li><Link to="/?boardId=3">Javascript</Link></li>
+                          <li><Link to="/?boardId=4">React</Link></li>
+                          <li><Link to="/?boardId=5">Spring boot</Link></li>
                         </ul>
                       </li>
-                      <li><Link to="#">Storage</Link>
+                      <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>Storage</Link>
                         <ul className="sub-menu">
-                          <li><Link to="#">Oracle</Link></li>
-                          <li><Link to="#">Mysql</Link></li>
-                          <li><Link to="#">Mssql</Link></li>
-                          <li><Link to="#">Redis</Link></li>
+                          <li><Link to="/?boardId=6">Oracle</Link></li>
+                          <li><Link to="/?boardId=7">Mysql</Link></li>
+                          <li><Link to="/?boardId=8">Mssql</Link></li>
+                          <li><Link to="/?boardId=9">Redis</Link></li>
                         </ul>
                       </li>
-                      <li><Link to="#">Network</Link></li>
-                      <li><Link to="#">OS</Link></li>
-                      <li><Link to="#">알고리즘</Link></li>
-                      <li><Link to="#">자료구조</Link></li>
-                      <li><Link to="#">Docker</Link></li>
-                      <li><Link to="#">Jenkins</Link></li>
-                      <li><Link to="#">Nginx</Link></li>
+                      <li><Link to="/?boardId=10">Network</Link></li>
+                      <li><Link to="/?boardId=11">OS</Link></li>
+                      <li><Link to="/?boardId=12">알고리즘</Link></li>
+                      <li><Link to="/?boardId=13">자료구조</Link></li>
+                      <li><Link to="/?boardId=14">Docker</Link></li>
+                      <li><Link to="/?boardId=15">Jenkins</Link></li>
+                      <li><Link to="/?boardId=16">Nginx</Link></li>
                       {/*<li><Link to="#">ELK</Link></li>*/}
                     </ul>
                   </li>
-                  <li><Link to="#">일상</Link>
+                  <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>일상</Link>
                     <ul className="sub-menu">
-                      <li><Link to="#">맥주</Link></li>
-                      <li><Link to="#">캠핑</Link></li>
-                      <li><Link to="#">커피</Link></li>
+                      <li><Link to="/?boardId=17">맥주</Link></li>
+                      <li><Link to="/?boardId=18">캠핑</Link></li>
+                      <li><Link to="/?boardId=19">커피</Link></li>
+                      <li><Link to="/?boardId=20">잡담</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="#">부제</Link>
+                  <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>부제</Link>
                     <ul className="sub-menu">
-                      <li><Link to="#">전원버튼부터 웹사이트까지</Link></li>
+                      <li><Link to="/?boardId=21">전원버튼부터 웹사이트까지</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="#">소개</Link></li>
+                  <li><Link to="/introduce">소개</Link></li>
                 </ul>
               </div>
             </nav>
