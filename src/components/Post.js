@@ -36,6 +36,16 @@ class Post extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.state.postNum !== prevState.postNum){
+      let req = {
+        postNum : this.state.postNum
+      };
+
+      this.props.fetchPostTrigger(req);
+    }
+  }
+
   componentWillUnmount(){
     this.props.emptyPostTrigger();
   }
