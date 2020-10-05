@@ -2,14 +2,10 @@ version: '3'
 
 services:
   my_blog_front:
-    build:
-      context: .
-
-    image: blog-front:latest
-
-    container_name: myBlogFront
+    image: hub.develobeer.blog/blog-front:${TAG}
 
     deploy:
+      replicas: 3
       resources:
         limits:
           cpus: '0.50'
@@ -17,4 +13,3 @@ services:
 
     ports:
       - "80:80"
-                       
