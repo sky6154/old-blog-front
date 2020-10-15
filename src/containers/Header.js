@@ -36,7 +36,7 @@ class Header extends Component {
                           <li><Link to="/?boardId=2">PHP</Link></li>
                           <li><Link to="/?boardId=3">Javascript</Link></li>
                           <li><Link to="/?boardId=4">React</Link></li>
-                          <li><Link to="/?boardId=5">Spring boot</Link></li>
+                          <li><Link to="/?boardId=5">Spring 관련</Link></li>
                         </ul>
                       </li>
                       <li><Link to="#" style={{pointerEvents: "none"}} onClick={(e) => e.preventDefault()}>Storage</Link>
