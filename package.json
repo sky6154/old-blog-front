@@ -7,7 +7,7 @@
     "immutability-helper": "^2.9.1",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "prop-types": "^15.7.2",
     "qs": "^6.9.4",
     "query-string": "~5.1.1",
